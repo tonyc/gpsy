@@ -1,5 +1,12 @@
 module App
   class << self
+    
+    def env
+      ENV['APP_ENV'] || 'development'
+    end
+    
+    alias_method :environment, :env
+    
     def root
       @root ||= File.expand_path(File.join(File.dirname(__FILE__), "..")).freeze
     end
