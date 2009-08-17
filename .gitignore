@@ -2,5 +2,6 @@ log/*.log
 config/database.yml
 tmp/*
 doc/*
+db/
 db/*.sqlite3
 .*.swp
