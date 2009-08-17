@@ -5,8 +5,8 @@ module App
     end
     
     def setup_database_connection!
-      DataMapper::Logger.new(App::Config[:log_file], App::Config[:log_level])
-      DataMapper.setup(:default, YAML::load_file(App::Config[:db_config]))
+      DataMapper::Logger.new(Config[:log_file], Config[:log_level])
+      DataMapper.setup(:default, YAML::load_file(Config[:db_config]))
     end
   end
 end
