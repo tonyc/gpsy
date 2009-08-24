@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby -rubygems
+
+require(File.join(File.dirname(__FILE__), '..', 'config', 'boot'))
+require 'gps'
+
+App.setup_database_connection!
+
+gps = Gps::Receiver.create('gpsd')
+
+trap("INT") do
+  puts "\nShutting down."
+  gps.stop
+  exit
+end
+
+gps.start
+
+if gps.started?
+  puts "[#{Time.now}] - GPS Started, first fix in ~5 seconds."
+else
+  puts "GPS didn't start for some reason, exiting."
+  exit -1
+end
+
+
+while(true) do
+  sleep(5.0)
+  
+  gps_fix = GpsFix.create({
+    :latitude  => gps.latitude,
+    :longitude => gps.longitude,
+    :altitude  => gps.altitude,
+    :course    => gps.course,
+    :speed     => gps.speed,
+    :timestamp => Time.at(gps.timestamp)
+  })
+  
+  puts "[#{Time.now}] - Saved GPS Fix: #{gps_fix.inspect}"
+end
+

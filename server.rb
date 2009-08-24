@@ -7,5 +7,7 @@ App.setup_database_connection!
 
 get '/' do
   @fix_count = GpsFix.count
+  
+  @fixes = GpsFix.all(:order => [:timestamp.desc], :limit => 10)
   erb :index
 end

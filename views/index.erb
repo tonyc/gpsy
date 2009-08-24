@@ -1,1 +1,7 @@
 <p>GPS Fix Count: <%= @fix_count %></p>
+
+<ul>
+<% for fix in @fixes %>
+  <li>(<%= fix.timestamp %>) - Lat: <%= fix.latitude %>, Lon: <%= fix.longitude %></li>
+<% end %>
+</ul>
