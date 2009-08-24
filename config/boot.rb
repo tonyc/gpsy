@@ -1,4 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'rubygems'
 
@@ -6,6 +6,7 @@ require 'rubygems'
 require 'dm-core'
 require 'dm-aggregates'
 require 'dm-validations'
+require 'dm-timestamps'
 
 require 'app'
 

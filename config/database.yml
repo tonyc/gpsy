@@ -1,2 +1,3 @@
+---
 :adapter:  sqlite3
-:database: db/test.db
+:database: db/development.db

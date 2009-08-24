@@ -8,7 +8,7 @@ module App
     alias_method :environment, :env
     
     def root
-      @root ||= File.expand_path(File.join(File.dirname(__FILE__), "..")).freeze
+      @root ||= File.expand_path(File.join(File.dirname(__FILE__), '..')).freeze
     end
     
     def setup_database_connection!
@@ -19,8 +19,8 @@ module App
   end # Class Methods
   
   Config = {
-    :db_config => File.expand_path(File.join(App.root, "config", "database.yml")).freeze,
-    :log_file  => File.expand_path(File.join(App.root, "log", "#{App.env}.log")).freeze,
+    :db_config => File.expand_path(File.join(App.root, 'config', 'database.yml')).freeze,
+    :log_file  => File.expand_path(File.join(App.root, 'log', "#{App.env}.log")).freeze,
     :log_level => :debug
   }.freeze
   
